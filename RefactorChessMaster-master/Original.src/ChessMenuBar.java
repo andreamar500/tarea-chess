@@ -69,23 +69,30 @@ public class ChessMenuBar
                 toggleGraveyardHandler();
             }
         }
+        private void restartHandler(){
+            ( (ChessPanel)this.getParent() ).getGameEngine().reset();
+        }
     }
     // ----------------------------------------------------------
     /**
      * Takes an appropriate action if the about button is clicked.
      */
     private void aboutHandler(){
+		String t = """
+      		  YetAnotherChessGame v1.0 by:
+          	Ben Katz
+          	Myles David
+               "Danielle Bushrow
+               Final Project for CS2114 @ VT
+      		  """;
         JOptionPane.showMessageDialog(
-            this.getParent(),
-            "YetAnotherChessGame v1.0 by:\nBen Katz\nMyles David\n"
-                + "Danielle Bushrow\n\nFinal Project for CS2114 @ VT" );
+
+            this.getParent(),t);
     }
     /**
      * Takes an appropriate action if the restart button is clicked.
      */
-    private void restartHandler(){
-        ( (ChessPanel)this.getParent() ).getGameEngine().reset();
-    }
+
     /**
      * Takes an appropriate action if the exit button is clicked.
      * Uses Tony Allevato's code for exiting a GUI app without System.exit()
