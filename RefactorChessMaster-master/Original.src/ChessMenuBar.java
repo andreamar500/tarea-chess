@@ -70,8 +70,12 @@ public class ChessMenuBar
             }
         }
         private void restartHandler(){
-            ( (ChessPanel)this.getParent() ).getGameEngine().reset();
+            ( this.getParent() ).getGameEngine().reset();
         }
+		private ChessPanel getParent() {
+			// TODO Auto-generated method stub
+			return null;
+		}
     }
     // ----------------------------------------------------------
     /**
