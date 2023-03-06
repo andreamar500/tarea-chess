@@ -15,3 +15,8 @@
 /Pawn.class
 /Queen.class
 /Rook.class
+/GameLogObserver.class
+/ChessGameEngine$BoardListener.class
+/ChessGameBoardTest.class
+/ChessGamePieceTest.class
+/ChessGamePieceTest2.class

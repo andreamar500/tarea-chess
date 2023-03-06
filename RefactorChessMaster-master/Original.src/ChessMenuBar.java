@@ -69,49 +69,49 @@ public class ChessMenuBar
                 toggleGraveyardHandler();
             }
         }
-        private void restartHandler(){
-            ( this.getParent() ).getGameEngine().reset();
-        }
-		private ChessPanel getParent() {
-			// TODO Auto-generated method stub
-			return null;
-		}
     }
     // ----------------------------------------------------------
     /**
      * Takes an appropriate action if the about button is clicked.
      */
-    private void aboutHandler(){
-		String t = """
-      		  YetAnotherChessGame v1.0 by:
-          	Ben Katz
-          	Myles David
-               "Danielle Bushrow
-               Final Project for CS2114 @ VT
-      		  """;
+    private void aboutHandler() {
         JOptionPane.showMessageDialog(
-
-            this.getParent(),t);
+            this.getParent(),
+            """
+            YetAnotherChessGame v1.0 by:
+            Ben Katz
+            Myles David
+            Danielle Bushrow
+            
+            Final Project for CS2114 @ VT
+            """
+        );
     }
     /**
      * Takes an appropriate action if the restart button is clicked.
      */
-
+    private void restartHandler(){
+        ( (ChessPanel)this.getParent() ).getGameEngine().reset();
+    }
     /**
      * Takes an appropriate action if the exit button is clicked.
      * Uses Tony Allevato's code for exiting a GUI app without System.exit()
      * calls.
      */
-    private void exitHandler(){
-        JOptionPane.showMessageDialog( this.getParent(), "Thanks for leaving"
-            + ", quitter! >:(" );
+    private void exitHandler() {
+        JOptionPane.showMessageDialog(this.getParent(), "Thanks for leaving, quitter! >:(");
         Component possibleFrame = this;
-        while ( possibleFrame != null && !( possibleFrame instanceof JFrame ) ){
+        while (possibleFrame != null && !(possibleFrame instanceof JFrame)) {
             possibleFrame = possibleFrame.getParent();
         }
-        JFrame frame = (JFrame)possibleFrame;
-        frame.setVisible( false );
-        frame.dispose();
+        JFrame frame = null;
+        if (possibleFrame instanceof JFrame) {
+            frame = (JFrame) possibleFrame;
+        }
+        if (frame != null) {
+            frame.setVisible(false);
+            frame.dispose();
+        }
     }
     /**
      * Takes an appropriate action if the toggle graveyard button is clicked.

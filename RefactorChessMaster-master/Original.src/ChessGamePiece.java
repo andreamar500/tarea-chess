@@ -57,14 +57,14 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
         int pieceColor ){
         skipMoveGeneration = false;
-        this.pieceColor = pieceColor;
-        pieceImage = createImageByPieceType();
+        this.setPieceColor(pieceColor);
+        setPieceImage(createImageByPieceType());
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
@@ -89,15 +89,15 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.BLACK, WHITE, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
         int pieceColor,
         boolean skipMoveGeneration ){
         this.skipMoveGeneration = skipMoveGeneration;
-        this.pieceColor = pieceColor;
-        pieceImage = this.createImageByPieceType();
+        this.setPieceColor(pieceColor);
+        setPieceImage(this.createImageByPieceType());
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
@@ -392,7 +392,7 @@ public abstract class ChessGamePiece{
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
+                    //se elimino count ++
                     break;
                 }
                 else
@@ -416,7 +416,7 @@ public abstract class ChessGamePiece{
      * @return ImageIcon The ImageIcon as an Image
      */
     public ImageIcon getImage(){
-        return pieceImage;
+        return getPieceImage();
     }
     // ----------------------------------------------------------
     /**
@@ -426,7 +426,7 @@ public abstract class ChessGamePiece{
      *         unassigned piece.
      */
     public int getColorOfPiece(){
-        return pieceColor;
+        return getPieceColor();
     }
     // ----------------------------------------------------------
     /**
@@ -737,4 +737,16 @@ public abstract class ChessGamePiece{
         return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
             + ", " + pieceColumn + ")";
     }
+	public int getPieceColor() {
+		return pieceColor;
+	}
+	public void setPieceColor(int pieceColor) {
+		this.pieceColor = pieceColor;
+	}
+	public ImageIcon getPieceImage() {
+		return pieceImage;
+	}
+	public void setPieceImage(ImageIcon pieceImage) {
+		this.pieceImage = pieceImage;
+	}
 }
